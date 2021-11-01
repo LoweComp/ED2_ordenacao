@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1635725532 source:c:\users\jvict\desktop\ordenacao\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"ordenar.cpp"
+
+1635725876 c:\users\jvict\desktop\ordenacao\ordenar.cpp
+	<iostream>
+	<stdio.h>
+
+1635810091 source:c:\users\jvict\desktop\facul 2021.3\ed2\unidade 1\ordenacao\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"ordenar.cpp"
+
+1635810203 c:\users\jvict\desktop\facul 2021.3\ed2\unidade 1\ordenacao\ordenar.cpp
+	<iostream>
+	<stdio.h>
+
