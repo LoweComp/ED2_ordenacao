@@ -77,44 +77,73 @@ int k, j, aux;
    }
 }
 
-
-void merge_(int p, int q, int r, int v[])
+// Merges two subarrays of array[].
+// First subarray is arr[begin..mid]
+// Second subarray is arr[mid+1..end]
+void merge_(int vet[], int p, int q, int r)
 {
-   int i = p, j = q;
-   int k = 0;
-   int *aux;
+	int tam_pq = q - p + 1;
+	int tam_qr = r - q;
 
-   while (i < q && j < r){
-      if (v[i] < v[j]){
-            aux[k] = v[i];
-            i++;
-      }
-      else{
-            aux[k] = v[j];
-            j++;
-      }
-      k++;
-   }
-   while (i < q){
-        aux[k] = v[i];
-        i++;
-        k++;
-   }
-   while (j < r){
-        aux[k] = v[j];
-        j++;
-        k++;
-   }
-   for (i = p; i < r; i++)  v[i] = aux[i-p];
+	// Create arrays
+	int leftArray[tam_pq], rightArray[tam_qr];
+
+	// Copy data to temp arrays leftArray[] and rightArray[]
+	for (int i = 0; i < tam_pq; i++)
+		leftArray[i] = vet[p + i];
+	for (int j = 0; j < tam_qr; j++)
+		rightArray[j] = vet[q + 1 + j];
+
+	int index_p = 0, // Initial index of first sub-array
+		index_r = 0; // Initial index of second sub-array
+	int index_merged = p; // Initial index of merged array
+
+	// Merge the temp arrays back into array[left..right]
+	while (index_p < tam_pq && index_r < tam_qr) {
+		if (leftArray[index_p] <= rightArray[index_r]) {
+			vet[index_merged] = leftArray[index_p];
+			index_p++;
+		}
+		else {
+			vet[index_merged] = rightArray[index_r];
+			index_r++;
+		}
+		index_merged++;
+	}
+	// Copy the remaining elements of
+	// left[], if there are any
+	while (index_p < tam_pq) {
+		vet[index_merged] = leftArray[index_p];
+		index_p++;
+		index_merged++;
+	}
+	// Copy the remaining elements of
+	// right[], if there are any
+	while(index_r < tam_qr){
+		vet[index_merged] = rightArray[index_r];
+		index_r++;
+		index_merged++;
+	}
 }
 
-void mergesort(int p, int r, int v[])
+// begin is for left index and end is
+// right index of the sub-array
+// of arr to be sorted */
+void mergeSort(int vet[], int p, int r)
 {
-   if (p < r-1) {
-      int q = (p + r)/2;
-      mergesort (p, q, v);
-      mergesort (q, r, v);
-      merge_(p, q, r, v);
-   }
+	if (p >= r)
+		return; // Returns recursively
+
+	int q = p + (r - p) / 2;
+	mergeSort(vet, p, q);
+	mergeSort(vet, q + 1, r);
+	merge_(vet, p, q, r);
+
+	for(int i=0; i < 8;i++){
+    cout << vet[i] << " ";
+    }
+
+    cout << endl;
+
 }
 

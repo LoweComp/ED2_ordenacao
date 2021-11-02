@@ -46,8 +46,8 @@ cout << "\n\n";
 
 randomizaVet(v);
 
-cout << "\nMERGE SORT" << endl;
-mergesort(0, 7, v);
+cout << "\nMERGE SORT\n" << endl;
+mergeSort(v, 0, 7);
 
 return 0;
 }
