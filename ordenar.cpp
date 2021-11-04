@@ -50,9 +50,7 @@ void selection_sort(int vetor[],int max){
     }
 
   }
-    //for(int i = 0; i < max; i++){
-    //    cout << vetor[i] << " ";
-    //}
+
 }
 
 
@@ -85,20 +83,18 @@ void merge_(int vet[], int p, int q, int r)
 	int tam_pq = q - p + 1;
 	int tam_qr = r - q;
 
-	// Create arrays
 	int leftArray[tam_pq], rightArray[tam_qr];
 
-	// Copy data to temp arrays leftArray[] and rightArray[]
 	for (int i = 0; i < tam_pq; i++)
 		leftArray[i] = vet[p + i];
 	for (int j = 0; j < tam_qr; j++)
 		rightArray[j] = vet[q + 1 + j];
 
-	int index_p = 0, // Initial index of first sub-array
-		index_r = 0; // Initial index of second sub-array
-	int index_merged = p; // Initial index of merged array
+	int index_p = 0,
+		index_r = 0;
+	int index_merged = p;
 
-	// Merge the temp arrays back into array[left..right]
+	// Merge the arrays back into main array[left..right]
 	while (index_p < tam_pq && index_r < tam_qr) {
 		if (leftArray[index_p] <= rightArray[index_r]) {
 			vet[index_merged] = leftArray[index_p];
@@ -110,15 +106,13 @@ void merge_(int vet[], int p, int q, int r)
 		}
 		index_merged++;
 	}
-	// Copy the remaining elements of
-	// left[], if there are any
+	// Copy the remaining elements of left[], if there are any
 	while (index_p < tam_pq) {
 		vet[index_merged] = leftArray[index_p];
 		index_p++;
 		index_merged++;
 	}
-	// Copy the remaining elements of
-	// right[], if there are any
+	// Copy the remaining elements of right[], if there are any
 	while(index_r < tam_qr){
 		vet[index_merged] = rightArray[index_r];
 		index_r++;
@@ -126,13 +120,10 @@ void merge_(int vet[], int p, int q, int r)
 	}
 }
 
-// begin is for left index and end is
-// right index of the sub-array
-// of arr to be sorted */
 void mergeSort(int vet[], int p, int r)
 {
 	if (p >= r)
-		return; // Returns recursively
+		return; // Returns Recursively
 
 	int q = p + (r - p) / 2;
 	mergeSort(vet, p, q);
@@ -146,4 +137,3 @@ void mergeSort(int vet[], int p, int r)
     cout << endl;
 
 }
-
